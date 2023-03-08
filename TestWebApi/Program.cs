@@ -20,14 +20,9 @@ optionBuilder = sqlOptions =>
 {
     sqlOptions.EnableRetryOnFailure(
         maxRetryCount: 10,
-    maxRetryDelay: TimeSpan.FromSeconds(30),
+    maxRetryDelay: TimeSpan.FromSeconds(10),
         errorNumbersToAdd: null);
 };
-
-builder.Services.AddDbContextFactory<HospitalDBContext>(options =>
-{
-    options.UseSqlServer(connectionString, sqlServerOptionsAction: optionBuilder);
-});
 
 builder.Services.AddDbContext<HospitalDBContext>(options =>
 {
